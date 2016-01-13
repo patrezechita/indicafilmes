@@ -1,7 +1,7 @@
 // recebe um nome para pesquisar e retorna JSON com os filmes que achar
 function pesquisaFilmeNome(nomeFilme) {
 
-document.getElementById("divPesquisa").innerHTML = "carregando";
+    document.getElementById("divPesquisa").innerHTML = "carregando";
     $.ajax({
         url: 'http://www.omdbapi.com/?s=' + nomeFilme + '&r=JSON&type=movie',
         type: 'get',
@@ -10,7 +10,7 @@ document.getElementById("divPesquisa").innerHTML = "carregando";
         success: function(response, textStatus, jqXHR) {
 
             for (var i = 0; i < response.Search.length; i++) {
-document.getElementById("divPesquisa").innerHTML = "";
+                document.getElementById("divPesquisa").innerHTML = "";
                 desenha_IMDb_DIV(response.Search[i].imdbID, "divPesquisa");
                 //console.log(response.Search[i].Title + " " + response.Search[i].imdbID);
                 //document.getElementById("demo").innerHTML += response.Search[i].Title + " ";
@@ -39,8 +39,9 @@ function desenha_IMDb_DIV(imdb, div) {
         success: function(response, textStatus, jqXHR) {
 
 
-            if(response.Poster == "N/A"){
-                response.Poster = "semcapa.png";}
+            if (response.Poster == "N/A") {
+                response.Poster = "semcapa.png";
+            }
 
 
             document.getElementById(div).innerHTML += "<div id='filmeCapaCompleta'><img src='" + response.Poster + "'/>" +
@@ -49,7 +50,7 @@ function desenha_IMDb_DIV(imdb, div) {
                 "<li>Genero:" + response.Genre + "</li>" +
                 "<li>Sinopse:" + response.Plot + "</li>" +
                 "<li>nota:" + response.imdbRating + "</li>" +
-                "<li>imdb:" + "" +"</li></ul></div>";
+                "<li>imdb:" + "" + "</li></ul></div>";
 
 
 
@@ -145,6 +146,40 @@ function louco() {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+$.ajax({
+//  data: parms,
+  url: 'http://ia.media-imdb.com/images/M/MV5BMTcwNzk2MjQyNl5BMl5BanBnXkFtZTcwMjA0MjEzMQ@@._V1_SX300.jpg',
+  type: 'get',
+  dataType: 'image/jpeg',
+  success: function (response, textStatus, jqXHR) {
+    // Here your code
+    console.log(response);
+    $("divPesquisa").append(response);
+  },
+  error: function(jqXHR, textStatus, errorThrown) {
+  }
+});
+
+
+
+
+
+function image() {
+    var img = document.createElement("IMG");
+    img.src = "http://ia.media-imdb.com/images/M/MV5BNDk2NTk1NzQxN15BMl5BanBnXkFtZTYwMDMyMTg5._V1_SX300.jpg";
+    $('#image').html(img);
+}
 
 
 
