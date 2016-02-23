@@ -56,14 +56,71 @@ class Pesquisa {
 
     }
 
-    maisPopulares () {
+    maisPopulares (genero) {
 
     }
 }
 
 class Token {
+
+	//var listaTokens = [];
 	geraNovo () {
 		return "871050ddbdac415dbd122a25e60e7208";
+	}
+}
+
+class Genero {
+
+	constructor (generoNum) {
+		this.generoNum = generoNum;
+	}
+
+	recuperaNome () {
+
+		switch (this.generoNum) {
+			case 28:
+				return "Action";
+			case 12:
+				return "Adventure";
+			case 16:
+				return "Animation";	
+			case 35:
+				return "Comedy";
+			case 80:
+				return "Crime";
+			case 99:
+				return "Documentary";
+			case 18:
+				return "Drama";
+			case 10751:
+				return "Family";
+			case 14:
+				return "Fantasy";
+			case 10769:
+				return "Foreign";
+			case 36:
+				return "History";
+			case 27:
+				return "Horror";
+			case 10402:
+				return "Music";
+			case 9648:
+				return "Mystery";
+			case 10749:
+				return "Romance";
+			case 878:
+				return "Science Fiction";
+			case 10770:
+				return "TV Movie";
+			case 53:
+				return "Thriller";
+			case 10752:
+				return "War";
+			case 37:
+				return "Western";
+			default:
+				return "SEM CATEGORIA";
+		}
 	}
 }
 
@@ -74,15 +131,35 @@ class Imprime {
 
     divPesquisaNome () {
 		for(var i = 0; i < this.filmes.length; i++) {
+
+			var nomeVetor = new Array();
+		//console.log(this.filmes[i].genero.length);
+			for(var j=0; j<this.filmes[i].genero.length; j++) {
+				var genero = new Genero(this.filmes[i].genero[j]);
+				//console.log(this.filmes.genero[j]);
+				nomeVetor.push(genero.recuperaNome());
+				//console.log(this.filmes[i].genero[j]);
+			}
+
+			//console.log(nomeVetor);
+
+
 			document.getElementById("divPesquisa").innerHTML += "<div id='filmeCapaCompleta'><img src='" + this.filmes[i].link_capa + "'/>" +
                 "<br><strong>" + this.filmes[i].nome + "</strong>" +
                 "<ul><li>Ano:" + this.filmes[i].ano + "</li>" +
-                "<li>Genero:" + "" + "</li>" +
+                "<li>Genero:" + nomeVetor + "</li>" +
                 "<li>Sinopse:" + this.filmes[i].sinopse + "</li>" +
-                "<li>nota:" + this.filmes[i].nota_imdb + "</li>" +
-                "<li>imdb:" + "" + "</li></ul></div>";
+                "<li>imdb:" + this.filmes[i].nota_imdb + "</li></ul></div>";
 	
 		}
+   	}
+
+   	divIndicados () {
+
+   	}
+
+	divEmCartaz () {
+
    	}
 
    	divAssistidos () {
@@ -129,7 +206,8 @@ function pesquisaFilmeNome(nomeFilme) {
 
 
 
-
+var teste = new Genero(37);
+console.log(teste.recuperaNome());
 
 
 
