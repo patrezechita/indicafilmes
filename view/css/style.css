@@ -1,3 +1,8 @@
 img{
     max-width: 150px;
 }
+
+h2{
+	color: purple;
+	background-color: yellow;
+}

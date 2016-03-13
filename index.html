@@ -1,29 +1,85 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+    <head>
+        <title>Indica Filmes</title>
+        <meta name="description" content="Indicações de filmes">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" type="text/css" href="view/css/style.css">
+    </head>
 
-<head>
-    <title>Indica Filmes</title>
-    <meta name="description" content="Como usar charset na <meta> tag">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="stylesheet" type="text/css" href="view/css/style.css">
-</head>
-
-<body>
-
-
+    <body>
+        <h1>INDICA FILMES</h1>
+        <p>Seu site de indicações de filmes! :D</p>
+        <!-- PESQUISA POR NOME -->
+        <h2>Pesquisa por Nome</h2>
         <form>
             <input type="text" id="formValueId" name="valueId" />
             <button type="button" name="button" onclick="pesquisaFilmeNome(this.form.valueId.value)">pesquisar</button>
         </form>
+        <div id="divPesquisaNome">
+            <div id="filmeCapaCompleta">
+                <img src="view/img/sem_capa.png">
+                <br>
+                <h3>Exemplo Filme</h3>
+                <ul>
+                    <li>Ano:undefined</li>
+                    <li>Genero:Horror,Science Fiction,Thriller</li>
+                    <li>Sinopse:In 2016 the sun has turned the entire world into a scorched and barren wasteland.</li>
+                    <li>imdb:5.25</li>
+                </ul>
+            </div>
+        </div>
 
-    <div id="divPesquisa">
-    </div>
+        <!-- FILMES EM CARTAZ -->
+        <h2>Filmes em Cartaz nos Cinemas</h2>
+        <div id="divPesquisaCartaz">
+            <div id="filmeCapaCompleta">
+                <img src="view/img/sem_capa.png">
+                <br>
+                <h3>Exemplo Filme</h3>
+                <ul>
+                    <li>Ano:undefined</li>
+                    <li>Genero:Horror,Science Fiction,Thriller</li>
+                    <li>Sinopse:In 2016 the sun has turned the entire world into a scorched and barren wasteland.</li>
+                    <li>imdb:5.25</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- INDICA FILMES -->
+        <h2>Indicações de Filmes</h2>
+        <button type="button" name="button" onclick="alert('ainda não implementado')">ME INDIQUE FILMES</button>
 
 
+        <!-- FILMES ASSISTIDOS -->
+        <h2>Filmes Assistidos</h2>
+        <div id="divFilmesAssistidos">
+            <div id="filmeCapaCompleta">
+                <img src="view/img/sem_capa.png">
+                <br>
+                <h3>Exemplo Filme</h3>
+                <ul>
+                    <li>Ano:undefined</li>
+                    <li>Genero:Horror,Science Fiction,Thriller</li>
+                    <li>Sinopse:In 2016 the sun has turned the entire world into a scorched and barren wasteland.</li>
+                    <li>imdb:5.25</li>
+                </ul>
+            </div>
+        </div>
+        <button type="button" name="button" onclick="limpaBD();">LIMPA BD</button>
 
-
-
-    <script type="text/javascript" src="main.js"></script>
-</body>
-
+        <!-- JAVASCRIPT - CAMADAS -->
+            <!-- OBJECT -->
+                <script src="object/Filme.js"></script>
+            <!-- VIEW -->
+                <script src="view/Imprimir.js"></script>
+            <!-- LOGIC -->
+                <script src="logic/Pesquisar.js"></script>
+                <script src="logic/GerenciarGenero.js"></script>
+                <script src="logic/GerenciarToken.js"></script>
+            <!-- DATA -->
+                <script src="data/Persistir.js"></script>
+        <!-- JAVASCRIPT - PRINCIPAL -->
+            <script src="main.js"></script>
+    </body>
 </html>
