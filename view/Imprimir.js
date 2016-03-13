@@ -1,37 +1,27 @@
 "use strict";
 
-
-
-
 class Imprimir {
 	constructor(filmes) {
-        this.filmes = filmes;
-    }
+		this.filmes = filmes;
+	}
 
-    divPesquisaNome () {
+	// imprime um ARRAY de filmes em uma DIV especifica
+	imprimeFilmeCompleto(localImpressao) {
+		// FOR para cada objeto Filme do ARRAY
 		for(var i = 0; i < this.filmes.length; i++) {
-
 			var nomeVetor = new Array();
-		//console.log(this.filmes[i].genero.length);
+		
+			// FOR para receber nome de cada gênero do ARRAY de cada Filme
 			for(var j=0; j<this.filmes[i].genero.length; j++) {
 				var genero = new GerenciarGenero(this.filmes[i].genero[j]);
-				//console.log(this.filmes.genero[j]);
 				nomeVetor.push(genero.recuperaNome());
-				//console.log(this.filmes[i].genero[j]);
 			}
 
-			//console.log(nomeVetor);
+			// serializa o array, retira todas as virgulas e preenche com espaço
+			nomeVetor = nomeVetor.toString().replace(/,/g, " ");
 
-			//recorta o nome do começo da capa
-			//var link_capa_auxiliar;
-			//link_capa_auxiliar = this.filmes[i].link_capa;
-			//var tamanho = link_capa_auxiliar.length;
-			//link_capa_auxiliar = link_capa_auxiliar.slice(30, tamanho);
-			//console.log(link_capa_auxiliar);
-
-
-
-			//cria uma string pra gerar o botao
+			// geração da STRING que cria os parâmetros para o botão 'já assisti'
+			// está feio e estranho, mas funciona xD
 			var stringAuxiliar = "\"" + this.filmes[i].id + "\", \"" + 
 				this.filmes[i].nome + "\", \"" + 
 				this.filmes[i].genero + "\", \"" + 
@@ -39,96 +29,63 @@ class Imprimir {
 				this.filmes[i].nota_imdb + "\", \"" + 
 				"" + "\", \"" + 
 				this.filmes[i].link_capa + "\", \"" ;
-	
 
-
-				if(this.filmes[i].link_capa[0] == "v"){
-
-				}else{
-					var capa = "http://image.tmdb.org/t/p/w500" + this.filmes[i].link_capa;
-				}
-			//console.log(stringAuxiliar);
-			document.getElementById("divPesquisaNome").innerHTML += 
-				"<div id='filmeCapaCompleta'>" +
-				"<img src='" + capa + "' alt='" + this.filmes[i].nome + "'/>" +
-                "<br><h3>" + this.filmes[i].nome + "</h3>" +
-                "<ul><li>Ano:" + this.filmes[i].data_estreia + "</li>" +
-                "<li>Genero:" + nomeVetor + "</li>" +
-                "<li>Sinopse:" + this.filmes[i].sinopse + "</li>" +
-                "<li>imdb:" + this.filmes[i].nota_imdb + "</li></ul></div>";
-
-                var k;
-                for(k=1; k<6; k++){
-                	var stringAuxiliar2 = stringAuxiliar;
-                	stringAuxiliar2 += k + "\"";
-                	//console.log(stringAuxiliar2);
-                	document.getElementById("divPesquisaNome").innerHTML +=
-                	"<button type='button' name='button' onclick='guardaFilme(" + stringAuxiliar2 + ")'>Já Assisti! Nota" + k +"</button>";
-                }
-                
-
-
-                //id, nome, genero, data_estreia, nota_imdb, nota_usuario, link_capa, sinopse
-	
-		}
-   	}
-
-   	divIndicados () {
-
-   	}
-
-	divEmCartaz () {
-
-   	}
-
-   	divAssistidos () {
-		for(var i = 0; i < this.filmes.length; i++) {
-
-			var nomeVetor = new Array();
-		//console.log(this.filmes[i].genero.length);
-			for(var j=0; j<this.filmes[i].genero.length; j++) {
-				var genero = new GerenciarGenero(this.filmes[i].genero[j]);
-				//console.log(this.filmes.genero[j]);
-				nomeVetor.push(genero.recuperaNome());
-				//console.log(this.filmes[i].genero[j]);
+			// adiciona URL para o link da capa. se não tiver capa, não faz nada (começa com view/img...)
+			if(this.filmes[i].link_capa[0] != "v") {
+				var capa = "http://image.tmdb.org/t/p/w500" + this.filmes[i].link_capa;
 			}
 
-			//console.log(nomeVetor);
-
-			//recorta o nome do começo da capa
-			//var link_capa_auxiliar;
-			//link_capa_auxiliar = this.filmes[i].link_capa;
-			//var tamanho = link_capa_auxiliar.length;
-			//link_capa_auxiliar = link_capa_auxiliar.slice(30, tamanho);
-			//console.log(link_capa_auxiliar);
-
-
-
-			//cria uma string pra gerar o botao
-
-
-				if(this.filmes[i].link_capa[0] != "v"){
-
-				
-					var capa = "http://image.tmdb.org/t/p/w500" + this.filmes[i].link_capa;
-				}
-			//console.log(stringAuxiliar);
-			document.getElementById("divFilmesAssistidos").innerHTML += 
+			// imprime no HTML o DIV contendo o filme
+			document.getElementById(localImpressao).innerHTML += 
 				"<div id='filmeCapaCompleta'>" +
 				"<img src='" + capa + "' alt='" + this.filmes[i].nome + "'/>" +
-                "<br><h3>" + this.filmes[i].nome + "</h3>" +
-                "<ul><li>Ano:" + this.filmes[i].data_estreia + "</li>" +
-                "<li>Genero:" + nomeVetor + "</li>" +
-                "<li>Sinopse:" + this.filmes[i].sinopse + "</li>" +
-                "<li>imdb:" + this.filmes[i].nota_imdb + "</li></ul></div>";
+				"<h3>" + this.filmes[i].nome + "</h3>" +
+				"<ul><li>Ano: " + this.filmes[i].data_estreia.slice(0,4) + "</li>" +
+				"<li>Gênero: " + nomeVetor + "</li>" +
+				"<li>Sinopse: " + this.filmes[i].sinopse + "</li>" +
+				"<li>Nota IMDb: " + this.filmes[i].nota_imdb + "</li></ul></div>";
 
-     
-                
-
-
-                //id, nome, genero, data_estreia, nota_imdb, nota_usuario, link_capa, sinopse
-	
+			// FOR para gerar os botões de nota 1 a 5
+			for(var k=1; k<6; k++) {
+				var stringAuxiliar2 = stringAuxiliar;
+				stringAuxiliar2 += k + "\"";
+				document.getElementById(localImpressao).innerHTML +=
+				"<button type='button' name='button' onclick='guardaFilme(" + stringAuxiliar2 + ")'>Nota " + k +"</button>";
+			}
 		}
-   	}
-    
+	}
+
+	// imprime um ARRAY de objetos Filme na div de filmes asistidos
+	imprimeFilmeSimples () {
+		// FOR para percorrer o ARRAY de Filmes
+		for(var i = 0; i < this.filmes.length; i++) {
+
+			// cria ARRAY para guardar os generos
+			var nomeVetor = new Array();
+
+			// recupera o nome de todos os generos
+			for(var j=0; j<this.filmes[i].genero.length; j++) {
+				var genero = new GerenciarGenero(this.filmes[i].genero[j]);
+				nomeVetor.push(genero.recuperaNome());
+			}
+
+			// serializa o array, retira todas as virgulas e preenche com espaço
+			nomeVetor = nomeVetor.toString().replace(/,/g, " ");
+
+			// adiciona URL para o link da capa. se não tiver capa, não faz nada (começa com view/img...)
+			if(this.filmes[i].link_capa[0] != "v") {
+				var capa = "http://image.tmdb.org/t/p/w500" + this.filmes[i].link_capa;
+			}
+
+			// imprime no HTML o DIV contendo o filme assistido
+			document.getElementById("divFilmesAssistidos").innerHTML +=
+				"<div id='filmeCapaCompleta'>" +
+				"<img src='" + capa + "' alt='" + this.filmes[i].nome + "'/>" +
+				"<h3>" + this.filmes[i].nome + "</h3>" +
+				"<ul><li>Ano: " + this.filmes[i].data_estreia.slice(0,4) + "</li>" +
+				"<li>Gênero: " + nomeVetor + "</li>" +
+				"<li>Nota IMDb: " + this.filmes[i].nota_imdb + "</li>" +
+				"<li>Sua Nota: " + this.filmes[i].nota_usuario + "</li></ul></div>";
+		}
+	}
 }

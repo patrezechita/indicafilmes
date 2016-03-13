@@ -1,39 +1,36 @@
 "use strict";
 
 class Persistir {
+    // recebe um objeto Filme, serializa ele e guarda no localStorage
     guardaFilme(filme) {
-    	var filmeSerializado = JSON.stringify(filme);
-    	localStorage.setItem(filme.id, filmeSerializado);
+        var filmeSerializado = JSON.stringify(filme);
+        localStorage.setItem(filme.id, filmeSerializado);
     }
 
+    // verifica se um ID de Filme está no banco de dados localStorage
     verificaFilme(id) {
-
+        // A IMPLEMENTAR
     }
     
+    // recupera todos os Filmes que estão no localStorage, devolve um ARRAY de objetos Filme
     recuperaFilmes() {
         var i;
         var resultado = new Array();
-        for(i=0; i<localStorage.length; i++){
+
+        // para cada elemento no localStorage, criar um objeto Filme e guarda no ARRAY
+        for(i=0; i<localStorage.length; i++) {
             var chave = localStorage.key(i);
-            var lol = localStorage.getItem(chave);
-            lol = JSON.parse(lol);
+            var item = localStorage.getItem(chave);
+            item = JSON.parse(item);
 
-
-
-            lol.genero = lol.genero.split(",");
+            // separa os gêneros da string e cria um vetor
+            item.genero = item.genero.split(",");
             
-
-            var filmeRecuperado = new Filme(parseInt(lol.id), lol.nome, lol.genero, lol.data_estreia, lol.nota_imdb, lol.nota_usuario, lol.link_capa, "");
+            var filmeRecuperado = new Filme(parseInt(item.id), item.nome, item.genero, item.data_estreia, item.nota_imdb, item.nota_usuario, item.link_capa, "");
             resultado.push(filmeRecuperado);
-            //console.log(resultado);
-
-
-
-            //(id, nome, genero, data_estreia, nota_imdb, nota_usuario, link_capa, sinopse)
         }
 
         return resultado;
-
     }
 
     // limpa banco de dados local storage

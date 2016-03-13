@@ -1,7 +1,5 @@
 "use strict";
 
-
-
 class GerenciarGenero {
 	constructor(generoNum) {
 		this.generoNum = parseInt(generoNum);

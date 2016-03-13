@@ -8,20 +8,22 @@ class Filme {
         this.data_estreia = data_estreia;
         this.nota_imdb = nota_imdb;
 
+        // nota de usuário é opcional
         if (nota_usuario) {
-        	this.nota_usuario = nota_usuario;
+            this.nota_usuario = nota_usuario;
         }
 
+        // sinopse é opcional
         if (sinopse) {
-        	this.sinopse = sinopse;
+            this.sinopse = sinopse;
         }
 
+        // se não tem capa, então criar caminho para o erro de capa
         if (link_capa === null) {
-        	this.link_capa = "view/img/sem_capa.png"
-        }
-
+            this.link_capa = "view/img/sem_capa.png"
+        } 
         else {
-        	this.link_capa = link_capa;
+            this.link_capa = link_capa;
         }
     }
 }

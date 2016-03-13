@@ -16,19 +16,7 @@
             <input type="text" id="formValueId" name="valueId" />
             <button type="button" name="button" onclick="pesquisaFilmeNome(this.form.valueId.value)">pesquisar</button>
         </form>
-        <div id="divPesquisaNome">
-            <div id="filmeCapaCompleta">
-                <img src="view/img/sem_capa.png">
-                <br>
-                <h3>Exemplo Filme</h3>
-                <ul>
-                    <li>Ano:undefined</li>
-                    <li>Genero:Horror,Science Fiction,Thriller</li>
-                    <li>Sinopse:In 2016 the sun has turned the entire world into a scorched and barren wasteland.</li>
-                    <li>imdb:5.25</li>
-                </ul>
-            </div>
-        </div>
+        <div id="divPesquisaNome"></div>
 
         <!-- FILMES EM CARTAZ -->
         <h2>Filmes em Cartaz nos Cinemas</h2>
@@ -36,13 +24,18 @@
             <div id="filmeCapaCompleta">
                 <img src="view/img/sem_capa.png">
                 <br>
-                <h3>Exemplo Filme</h3>
+                <h3>Uma DP em CG</h3>
                 <ul>
-                    <li>Ano:undefined</li>
-                    <li>Genero:Horror,Science Fiction,Thriller</li>
-                    <li>Sinopse:In 2016 the sun has turned the entire world into a scorched and barren wasteland.</li>
-                    <li>imdb:5.25</li>
+                    <li>Ano: 2016</li>
+                    <li>Gênero: Horror</li>
+                    <li>Sinopse: In 2016 a group of happy students discover that they are unable to overcome the evil ways to pass a truly diabolical discipline.</li>
+                    <li>Nota IMDb: 7</li>
                 </ul>
+                <button type="button" name="button">Nota 1</button>
+                <button type="button" name="button">Nota 2</button>
+                <button type="button" name="button">Nota 3</button>
+                <button type="button" name="button">Nota 4</button>
+                <button type="button" name="button">Nota 5</button>
             </div>
         </div>
 
@@ -50,22 +43,9 @@
         <h2>Indicações de Filmes</h2>
         <button type="button" name="button" onclick="alert('ainda não implementado')">ME INDIQUE FILMES</button>
 
-
         <!-- FILMES ASSISTIDOS -->
         <h2>Filmes Assistidos</h2>
-        <div id="divFilmesAssistidos">
-            <div id="filmeCapaCompleta">
-                <img src="view/img/sem_capa.png">
-                <br>
-                <h3>Exemplo Filme</h3>
-                <ul>
-                    <li>Ano:undefined</li>
-                    <li>Genero:Horror,Science Fiction,Thriller</li>
-                    <li>Sinopse:In 2016 the sun has turned the entire world into a scorched and barren wasteland.</li>
-                    <li>imdb:5.25</li>
-                </ul>
-            </div>
-        </div>
+        <div id="divFilmesAssistidos"></div>
         <button type="button" name="button" onclick="limpaBD();">LIMPA BD</button>
 
         <!-- JAVASCRIPT - CAMADAS -->

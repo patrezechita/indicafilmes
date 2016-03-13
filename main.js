@@ -1,61 +1,38 @@
 "use strict";
 
+// define as funções de desenho que são automáticas
+function iniciaApp() {
+	imprimeFilmesAssistidos();
+}
 
-
-
-// recebe um nome para pesquisar e retorna JSON com os filmes que achar
+// pesquisa um nome de filme e imprime o resultado
 function pesquisaFilmeNome(nomeFilme) {
-
-
-
 	var novaPesquisa = new Pesquisar ();
 	var resultadoPesquisa = novaPesquisa.porNome(nomeFilme);
-
-	//console.log(resultadoPesquisa);
-
-
 	var imprime = new Imprimir(resultadoPesquisa);
-	imprime.divPesquisaNome();
-
-
-
-
-
+	imprime.imprimeFilmeCompleto("divPesquisaNome");
 }
 
-function fodase(lol){
-
-}
-
+// guarda um filme do botão de assistidos no banco de dados localStorage
 function guardaFilme(id, nome, genero, data_estreia, nota_imdb, sinopse, link_capa, nota_usuario) {
-	//var filmeSerializado = JSON.stringify(filme);
-    	var filme = new Filme(id, nome, genero, data_estreia, nota_imdb, nota_usuario, link_capa, sinopse);
-    	var persiste = new Persistir();
-    	persiste.guardaFilme(filme);
+	var filme = new Filme(id, nome, genero, data_estreia, nota_imdb, nota_usuario, link_capa, sinopse);
+	var persiste = new Persistir();
+	persiste.guardaFilme(filme);
 }
 
+// imprime todos os filmes assistidos
+function imprimeFilmesAssistidos() {
+	var filmesAssistidos = new Pesquisar();
+	var exibeFilmesAssistidos = filmesAssistidos.filmesAssistidos();
+	var imprimeAssistido = new Imprimir(exibeFilmesAssistidos);
+	imprimeAssistido.imprimeFilmeSimples();
+}
+
+// limpa o banco de dados localStorage
 function limpaBD() {
 	var banco = new Persistir;
 	banco.limpaBD();
 }
 
-function fodase(){
-	console.log("foda-se");
-}
-
-var teste = new GerenciarGenero(37);
-console.log(teste.recuperaNome());
-
-
-
-var recuperaAssistidos = new Persistir();
-var exibeAssistido = recuperaAssistidos.recuperaFilmes();
-var imprimeAssistido = new Imprimir(exibeAssistido);
-
-//console.log(exibeAssistido);
-imprimeAssistido.divAssistidos();
-//alert(localStorage.length);
-
-//API Key: 871050ddbdac415dbd122a25e60e7208
-
-//lembrar de aleatorizar a porra do token
+// inicia as funções automáticas
+iniciaApp();
