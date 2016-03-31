@@ -11,6 +11,13 @@ function iniciaApp() {
 	pesquisaEmCartaz();
 }
 
+// indica filmes com base nos critérios da classe Indicar
+function indica() {
+	var indicacao = new Indicar();
+	var imprimie = new Imprimir(indicacao.indica());
+	imprimie.imprimeFilmeCompleto("divIndicaFilmes");
+}
+
 // pesquisa um nome de filme e imprime o resultado
 function pesquisaFilmeNome(nomeFilme) {
 	var novaPesquisa = new Pesquisar();

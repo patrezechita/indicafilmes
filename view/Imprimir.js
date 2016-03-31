@@ -46,6 +46,16 @@ class Imprimir {
 				var capa = "http://image.tmdb.org/t/p/w500" + this.filmes[i].link_capa;
 			}
 
+			// prepara uma string para conter os botões
+			var botoes = "";
+
+			// FOR para gerar os botões de nota 1 a 5
+			for(var k=1; k<6; k++) {
+				var stringAuxiliar2 = stringAuxiliar;
+				stringAuxiliar2 += k + "\"";
+				botoes += "<button type='button' name='button' onclick='guardaFilme(" + stringAuxiliar2 + ")'>Nota " + k +"</button>";
+			}
+
 			// imprime no HTML o DIV contendo o filme
 			document.getElementById(localImpressao).innerHTML += 
 				"<div id='filmeCapaCompleta'>" +
@@ -54,15 +64,7 @@ class Imprimir {
 				"<ul><li>Ano: " + this.filmes[i].data_estreia.slice(0,4) + "</li>" +
 				"<li>Gênero: " + nomeVetor + "</li>" +
 				"<li>Sinopse: " + this.filmes[i].sinopse + "</li>" +
-				"<li>Nota IMDb: " + this.filmes[i].nota_imdb + "</li></ul></div>";
-
-			// FOR para gerar os botões de nota 1 a 5
-			for(var k=1; k<6; k++) {
-				var stringAuxiliar2 = stringAuxiliar;
-				stringAuxiliar2 += k + "\"";
-				document.getElementById(localImpressao).innerHTML +=
-				"<button type='button' name='button' onclick='guardaFilme(" + stringAuxiliar2 + ")'>Nota " + k +"</button>";
-			}
+				"<li>Nota IMDb: " + this.filmes[i].nota_imdb + "</li></ul>" + botoes + "</div>";
 		}
 	}
 

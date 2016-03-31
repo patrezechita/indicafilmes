@@ -8,45 +8,40 @@
     </head>
 
     <body>
-        <h1>INDICA FILMES</h1>
-        <p>Seu site de indicações de filmes! :D</p>
+    	<div id="conteudo">
+	    	<div id="cabecalho">
+	        <h1>INDICA FILMES</h1>
+	        <p>Seu site de indicações de filmes! :D</p>
+	        </div>
         <!-- PESQUISA POR NOME -->
-        <h2>Pesquisa por Nome</h2>
-        <form>
-            <input type="text" id="formValueId" name="valueId" />
-            <button type="button" name="button" onclick="pesquisaFilmeNome(this.form.valueId.value)">pesquisar</button>
-        </form>
-        <div id="divPesquisaNome"></div>
+        <div id="pesquisaNome">
+            <h2>Pesquisa por Nome</h2>
+            <form>
+                <input type="text" id="formValueId" name="valueId" />
+                <button type="button" name="button" onclick="pesquisaFilmeNome(this.form.valueId.value)">pesquisar</button>
+            </form>
+            <div id="divPesquisaNome"></div>
+        </div>
 
         <!-- FILMES EM CARTAZ -->
-        <h2>Filmes em Cartaz nos Cinemas</h2>
-        <div id="divPesquisaCartaz">
-            <div id="filmeCapaCompleta">
-                <img src="view/img/sem_capa.png">
-                <br>
-                <h3>Uma DP em CG</h3>
-                <ul>
-                    <li>Ano: 2016</li>
-                    <li>Gênero: Horror</li>
-                    <li>Sinopse: In 2016 a group of happy students discover that they are unable to overcome the evil ways to pass a truly diabolical discipline.</li>
-                    <li>Nota IMDb: 7</li>
-                </ul>
-                <button type="button" name="button">Nota 1</button>
-                <button type="button" name="button">Nota 2</button>
-                <button type="button" name="button">Nota 3</button>
-                <button type="button" name="button">Nota 4</button>
-                <button type="button" name="button">Nota 5</button>
-            </div>
+        <div id="filmesCartaz">
+            <h2>Filmes em Cartaz nos Cinemas</h2>
+            <div id="divPesquisaCartaz"></div>
         </div>
 
         <!-- INDICA FILMES -->
-        <h2>Indicações de Filmes</h2>
-        <button type="button" name="button" onclick="alert('ainda não implementado')">ME INDIQUE FILMES</button>
+        <div id="indicaFilmes">
+            <h2>Indicações de Filmes</h2>
+            <button type="button" name="button" onclick="indica();">ME INDIQUE FILMES</button>
+            <div id="divIndicaFilmes"></div>
+        </div>
 
         <!-- FILMES ASSISTIDOS -->
-        <h2>Filmes Assistidos</h2>
-        <div id="divFilmesAssistidos"></div>
-        <button type="button" name="button" onclick="limpaBD();">LIMPA BD</button>
+        <div id="filmesAssistidos">
+            <h2>Filmes Assistidos</h2>
+            <div id="divFilmesAssistidos"></div>
+            <button type="button" name="button" onclick="limpaBD();">LIMPA BD</button>
+        </div>
 
         <!-- JAVASCRIPT - CAMADAS -->
             <!-- OBJECT -->
@@ -54,6 +49,7 @@
             <!-- VIEW -->
                 <script src="view/Imprimir.js"></script>
             <!-- LOGIC -->
+                <script src="logic/Indicar.js"></script>
                 <script src="logic/Pesquisar.js"></script>
                 <script src="logic/GerenciarGenero.js"></script>
                 <script src="logic/GerenciarToken.js"></script>
@@ -61,5 +57,6 @@
                 <script src="data/Persistir.js"></script>
         <!-- JAVASCRIPT - PRINCIPAL -->
             <script src="main.js"></script>
+            </div>
     </body>
 </html>

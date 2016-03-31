@@ -1,8 +1,74 @@
-img{
-	max-width: 100px;
+body {
+    font-size: 12px;
+    line-height: 1.3;
+    font-family: Arial, Helvetica, Sans-Serif;
+    color: #ccc;
+    background: url('images/body-bg.gif');
 }
 
-h2{
-	color: purple;
-	background-color: yellow;
+
+img{
+ 	width:152px; 
+ 	height:214px; 
+ 	
+}
+
+
+
+#conteudo {
+	width:980px; 
+	margin:0 auto; 
+	display: table; 
+}
+
+#cabecalho { 
+	position:relative; 
+}
+
+#filmesCartaz { 	
+	display:table;	
+	width:980px; 
+	border-bottom:1px 
+	dashed #413e3e; 
+	padding-bottom:21px; 
+}
+
+#indicaFilmes {
+	display:table;	
+	width:980px; 
+	border-bottom:1px 
+	dashed #413e3e; 
+	padding-bottom:21px;
+}
+
+#filmesAssistidos {
+	display:table;	
+	width:980px; 
+	border-bottom:1px 
+	dashed #413e3e; 
+	padding-bottom:21px;
+}
+
+#pesquisaNome {
+	width:980px; 
+	display:block; 
+	clear:right; 
+	border-top:1px dashed #666;
+	border-bottom:1px dashed #666; 
+	padding:8px 0;
+	margin:0 0 0 auto;
+	position:right; 
+	display:inline; 
+	font-size:14px; 
+	font-weight:bold; 
+	color:#fff; 
+	line-height:24px; 
+	padding-right:6px;
+}
+
+#filmeCapaCompleta {
+	display:table;
+	width:152px; 
+	float:left; 
+	padding-right:25px;
 }
