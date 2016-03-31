@@ -1,12 +1,11 @@
 "use strict";
 
 class GerenciarGenero {
-	constructor(generoNum) {
-		this.generoNum = parseInt(generoNum);
+	constructor() {
 	}
 
-	recuperaNome() {
-		switch (this.generoNum) {
+	recuperaNome(num) {
+		switch (parseInt(num)) {
 			case 28:
 				return "Action";
 			case 12:
@@ -47,8 +46,10 @@ class GerenciarGenero {
 				return "War";
 			case 37:
 				return "Western";
+			case 0:
+				return "Genreless";
 			default:
-				return "SEM CATEGORIA";
+				return "Genreless";
 		}
 	}
 }

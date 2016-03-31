@@ -7,14 +7,22 @@ class Imprimir {
 
 	// imprime um ARRAY de filmes em uma DIV especifica
 	imprimeFilmeCompleto(localImpressao) {
-		// FOR para cada objeto Filme do ARRAY
+		// FOR para percorrer o ARRAY de Filmes
 		for(var i = 0; i < this.filmes.length; i++) {
+
+			// cria ARRAY para guardar os generos
 			var nomeVetor = new Array();
 		
-			// FOR para receber nome de cada gênero do ARRAY de cada Filme
-			for(var j=0; j<this.filmes[i].genero.length; j++) {
-				var genero = new GerenciarGenero(this.filmes[i].genero[j]);
-				nomeVetor.push(genero.recuperaNome());
+			// se o filme não tiver gêneros, definir retornar o padrão
+			if(parseInt(this.filmes[i].genero.length) == 0) {
+				nomeVetor.push(genero.recuperaNome(0));
+			}
+
+			else {
+				// FOR para receber nome de cada gênero do ARRAY de cada Filme
+				for(var j=0; j<this.filmes[i].genero.length; j++) {
+					nomeVetor.push(genero.recuperaNome(this.filmes[i].genero[j]));
+				}
 			}
 
 			// serializa o array, retira todas as virgulas e preenche com espaço
@@ -63,10 +71,16 @@ class Imprimir {
 			// cria ARRAY para guardar os generos
 			var nomeVetor = new Array();
 
-			// recupera o nome de todos os generos
-			for(var j=0; j<this.filmes[i].genero.length; j++) {
-				var genero = new GerenciarGenero(this.filmes[i].genero[j]);
-				nomeVetor.push(genero.recuperaNome());
+			// se o filme não tiver gêneros, definir retornar o padrão
+			if(parseInt(this.filmes[i].genero.length) == 0) {
+				nomeVetor.push(genero.recuperaNome(0));
+			}
+
+			else {
+				// FOR para receber nome de cada gênero do ARRAY de cada Filme
+				for(var j=0; j<this.filmes[i].genero.length; j++) {
+					nomeVetor.push(genero.recuperaNome(this.filmes[i].genero[j]));
+				}
 			}
 
 			// serializa o array, retira todas as virgulas e preenche com espaço

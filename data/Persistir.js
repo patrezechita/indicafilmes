@@ -9,7 +9,22 @@ class Persistir {
 
     // verifica se um ID de Filme está no banco de dados localStorage
     verificaFilme(id) {
-        // A IMPLEMENTAR
+        var i;
+
+        // para cada elemento no localStorage, comparar ID de parâmetro com ID do filme no localStorage 
+        for(i=0; i<localStorage.length; i++) {
+            var chave = localStorage.key(i);
+            var item = localStorage.getItem(chave);
+            item = JSON.parse(item);
+
+            // se igual, então filme está no localStorage
+            if(parseInt(item.id) == id) {
+                return false;
+            }
+        } 
+
+        // se procurar todo o localStorage e não achar, então filme não está
+        return true;
     }
     
     // recupera todos os Filmes que estão no localStorage, devolve um ARRAY de objetos Filme
