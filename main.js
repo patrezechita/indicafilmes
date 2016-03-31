@@ -1,6 +1,6 @@
 "use strict";
 
-// define a variável global "genero" que será usada para todas as consultas de nomes de gêneros 
+// define a variável global (Singleton) "genero" que será usada para todas as consultas de nomes de gêneros 
 // usadas em uma sessão. o motivo disso é justamente evitar o acesso exagerado a API
 // cada vez que fosse necessário descobrir o nome de um gênero
 var genero = new GerenciarGenero();

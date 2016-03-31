@@ -7,6 +7,9 @@ class Imprimir {
 
 	// imprime um ARRAY de filmes em uma DIV especifica
 	imprimeFilmeCompleto(localImpressao) {
+		// limpa o local de impressão
+		document.getElementById(localImpressao).innerHTML = "";
+
 		// FOR para percorrer o ARRAY de Filmes
 		for(var i = 0; i < this.filmes.length; i++) {
 

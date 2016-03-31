@@ -1,55 +1,33 @@
 "use strict";
 
 class GerenciarGenero {
+	// na instanciação do GerenciaGenero é feita uma consulta à API
+	// por questões de economiza de requisições, só é instanciado um único objeto (Singleton)
 	constructor() {
+		var xhttp = new XMLHttpRequest();
+		var token = new GerenciarToken();
+
+		// manipula a URL da API adicionando o número do gênero
+		var url = "http://api.themoviedb.org/3/genre/movie/list?api_key=" + token.geraNovo();
+		var resultadoPesquisa = new Array();
+		xhttp.open("GET", url, false);
+		xhttp.send();
+
+		// guarda no atributo "generos" a resposta da API
+		this.generos = JSON.parse(xhttp.responseText);
 	}
 
-	recuperaNome(num) {
-		switch (parseInt(num)) {
-			case 28:
-				return "Action";
-			case 12:
-				return "Adventure";
-			case 16:
-				return "Animation";	
-			case 35:
-				return "Comedy";
-			case 80:
-				return "Crime";
-			case 99:
-				return "Documentary";
-			case 18:
-				return "Drama";
-			case 10751:
-				return "Family";
-			case 14:
-				return "Fantasy";
-			case 10769:
-				return "Foreign";
-			case 36:
-				return "History";
-			case 27:
-				return "Horror";
-			case 10402:
-				return "Music";
-			case 9648:
-				return "Mystery";
-			case 10749:
-				return "Romance";
-			case 878:
-				return "Science Fiction";
-			case 10770:
-				return "TV Movie";
-			case 53:
-				return "Thriller";
-			case 10752:
-				return "War";
-			case 37:
-				return "Western";
-			case 0:
-				return "Genreless";
-			default:
-				return "Genreless";
+	// recebe um ID do gênero e retorna a string de seu nome
+	recuperaNome(idGenero) {
+		// para cada ID dentro do atributo generos, pesquisar se contém o idGenero 
+		for (var i = 0; i < this.generos.genres.length; i++) {
+			// se contém, então retornar nome
+			if(parseInt(idGenero) == this.generos.genres[i].id) {
+				return this.generos.genres[i].name;
+			}
 		}
+
+		// se não contém o ID, retornar resposta padrão "sem gênero"
+		return "Genderless";
 	}
 }
