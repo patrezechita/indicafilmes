@@ -61,10 +61,10 @@ class Imprimir {
 				"<div id='filmeCapaCompleta'>" +
 				"<img src='" + capa + "' alt='" + this.filmes[i].nome + "'/>" +
 				"<h3>" + this.filmes[i].nome + "</h3>" +
-				"<ul><li>Ano: " + this.filmes[i].data_estreia.slice(0,4) + "</li>" +
-				"<li>Gênero: " + nomeVetor + "</li>" +
-				"<li>Sinopse: " + this.filmes[i].sinopse + "</li>" +
-				"<li>Nota IMDb: " + this.filmes[i].nota_imdb + "</li></ul>" + botoes + "</div>";
+				"<textarea rows='8' cols='25' readonly>Ano: " + this.filmes[i].data_estreia.slice(0,4) +
+				"\nGênero: " + nomeVetor  +
+				"\nNota IMDb: " + this.filmes[i].nota_imdb +
+				"\nSinopse: " + this.filmes[i].sinopse  + "</textarea>" + botoes + "</div>";
 		}
 	}
 
@@ -101,10 +101,10 @@ class Imprimir {
 				"<div id='filmeCapaCompleta'>" +
 				"<img src='" + capa + "' alt='" + this.filmes[i].nome + "'/>" +
 				"<h3>" + this.filmes[i].nome + "</h3>" +
-				"<ul><li>Ano: " + this.filmes[i].data_estreia.slice(0,4) + "</li>" +
-				"<li>Gênero: " + nomeVetor + "</li>" +
-				"<li>Nota IMDb: " + this.filmes[i].nota_imdb + "</li>" +
-				"<li>Sua Nota: " + this.filmes[i].nota_usuario + "</li></ul></div>";
+				"Ano: " + this.filmes[i].data_estreia.slice(0,4) +
+				"<br>Gênero: " + nomeVetor +
+				"<br>Nota IMDb: " + this.filmes[i].nota_imdb +
+				"<br>Sua Nota: " + this.filmes[i].nota_usuario + "</div>";
 		}
 	}
 }

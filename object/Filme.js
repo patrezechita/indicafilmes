@@ -17,6 +17,10 @@ class Filme {
         if (sinopse) {
             this.sinopse = sinopse;
         }
+        // mas se não houver, preencher com "(...)"
+        else {
+            this.sinopse = "(...)";
+        }
 
         // se não tem capa, então criar caminho para o erro de capa
         if (link_capa === null) {

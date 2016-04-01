@@ -74,9 +74,37 @@ class Indicar {
 		var novaPesquisa = new Pesquisar();
 		var resultadoPesquisa = novaPesquisa.maisPopulares(parseInt(matrizImportancia[i].id));
 		
-		// adiciona filmes na quantidade da importancia
-		for(j = 0; j < parseInt(matrizImportancia[i].importancia); j++) {
+		var qtdImportancia = parseInt(matrizImportancia[i].importancia);
+		// adiciona filmes na quantidade da importância
+		for(j = 0; j < qtdImportancia; j++) {
+			
+			// essa parte é meio sinistra. se um filme for indicado mas ele já está no vetor de indicações
+			// então deve ser ignorado e o contador de importância deve ser incrementado
+			// para que não se perca o lugar do filme que foi ignorado
+			// flag de controle para adicionar ou não
+			var flagAdd = true;
+			
+			// se o vetor de indicação não for nulo
+			if(resultadoIndica != "") {
+				// para cada elemento no vetor de indicação
+				for(var k = 0; k < resultadoIndica.length; k++) {
+					// compara se ele está já no vetor de indicação
+					if(resultadoPesquisa[j].id == resultadoIndica[k].id) {
+						// se estiver, seta a flag false
+						flagAdd = false;
+					}
+				}
+			}
+
+			// o filme não está no vetor então pode ser adicionado
+			if(flagAdd == true) {
 			resultadoIndica.push(resultadoPesquisa[j]);
+			}
+
+			// já que o filme está, incrementa o contador para pesquisar novamente
+			else {
+				qtdImportancia++;
+			}
 		}
 	}
 

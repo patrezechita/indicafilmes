@@ -1,62 +1,76 @@
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
-        <title>Indica Filmes</title>
-        <meta name="description" content="Indicações de filmes">
+        <title>INDICA FILMES</title>
+        <meta name="description" content="Sua WebAPP de indicações de filmes!">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <link rel="stylesheet" type="text/css" href="view/css/style.css">
+        <link rel="shortcut icon" type="image/png" href="view/img/icon.gif"/>
     </head>
 
     <body>
     	<div id="conteudo">
 	    	<div id="cabecalho">
-	        <h1>INDICA FILMES</h1>
-	        <p>Seu site de indicações de filmes! :D</p>
+    	        <h1>INDICA FILMES</h1>
+    	        <p>Sua WebAPP de indicações de filmes! :D</p>
 	        </div>
-        <!-- PESQUISA POR NOME -->
-        <div id="pesquisaNome">
-            <h2>Pesquisa por Nome</h2>
-            <form>
-                <input type="text" id="formValueId" name="valueId" />
-                <button type="button" name="button" onclick="pesquisaFilmeNome(this.form.valueId.value)">pesquisar</button>
-            </form>
-            <div id="divPesquisaNome"></div>
-        </div>
 
-        <!-- FILMES EM CARTAZ -->
-        <div id="filmesCartaz">
-            <h2>Filmes em Cartaz nos Cinemas</h2>
-            <div id="divPesquisaCartaz"></div>
-        </div>
-
-        <!-- INDICA FILMES -->
-        <div id="indicaFilmes">
-            <h2>Indicações de Filmes</h2>
-            <button type="button" name="button" onclick="indica();">ME INDIQUE FILMES</button>
-            <div id="divIndicaFilmes"></div>
-        </div>
-
-        <!-- FILMES ASSISTIDOS -->
-        <div id="filmesAssistidos">
-            <h2>Filmes Assistidos</h2>
-            <div id="divFilmesAssistidos"></div>
-            <button type="button" name="button" onclick="limpaBD();">LIMPA BD</button>
-        </div>
-
-        <!-- JAVASCRIPT - CAMADAS -->
-            <!-- OBJECT -->
-                <script src="object/Filme.js"></script>
-            <!-- VIEW -->
-                <script src="view/Imprimir.js"></script>
-            <!-- LOGIC -->
-                <script src="logic/Indicar.js"></script>
-                <script src="logic/Pesquisar.js"></script>
-                <script src="logic/GerenciarGenero.js"></script>
-                <script src="logic/GerenciarToken.js"></script>
-            <!-- DATA -->
-                <script src="data/Persistir.js"></script>
-        <!-- JAVASCRIPT - PRINCIPAL -->
-            <script src="main.js"></script>
+            <!-- PESQUISA POR NOME -->
+            <div id="pesquisaNome">
+                <h2>Pesquisa por Nome</h2>
+                <form>
+                    <input type="text" id="formValueId" name="valueId" />
+                    <button type="button" name="button" onclick="pesquisaFilmeNome(this.form.valueId.value)">PESQUISAR</button>
+                </form>
+                <br>
+                <div id="divPesquisaNome"></div>
             </div>
+
+            <!-- FILMES EM CARTAZ -->
+            <div id="filmesCartaz">
+                <h2>Filmes em Cartaz nos Cinemas</h2>
+                <br>
+                <div id="divPesquisaCartaz"></div>
+            </div>
+
+            <!-- INDICA FILMES -->
+            <div id="indicaFilmes">
+                <h2>Indicações de Filmes</h2>
+                <button type="button" name="button" onclick="indica();">INDIQUE FILMES!</button>
+                <br>
+                <br>
+                <div id="divIndicaFilmes"></div>
+            </div>
+
+            <!-- FILMES ASSISTIDOS -->
+            <div id="filmesAssistidos">
+                <h2>Filmes Assistidos</h2>
+                <br>
+                <div id="divFilmesAssistidos"></div>
+            </div>
+
+            <br>
+            <button type="button" name="button" onclick="limpaBD();">LIMPAR BANCO DE DADOS</button>
+
+            <!-- RODAPÉ -->
+            <div id="rodape">
+                <p>Criado com <span>❤</span> - Hospedado em <a href="https://github.com/patrezechita/indicafilmes">GitHub</a> - FACOM/UFMS</p>
+            </div>
+
+            <!-- JAVASCRIPT - CAMADAS -->
+                <!-- OBJECT -->
+                    <script src="object/Filme.js"></script>
+                <!-- VIEW -->
+                    <script src="view/Imprimir.js"></script>
+                <!-- LOGIC -->
+                    <script src="logic/Indicar.js"></script>
+                    <script src="logic/Pesquisar.js"></script>
+                    <script src="logic/GerenciarGenero.js"></script>
+                    <script src="logic/GerenciarToken.js"></script>
+                <!-- DATA -->
+                    <script src="data/Persistir.js"></script>
+            <!-- JAVASCRIPT - PRINCIPAL -->
+            <script src="main.js"></script>
+        </div>
     </body>
 </html>
